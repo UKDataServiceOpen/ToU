@@ -1,0 +1,55 @@
+---
+title: "UKDS_quarto"
+format: docx
+---
+
+## Running Code
+
+```{r}
+#| echo: true
+
+x <- seq(-4, 4, length=100)
+y <- dnorm(x)
+plot(x,y, type = "l", lwd = 2, axes = FALSE, xlab = "", ylab = "")
+axis(1, at = -3:3, labels = c("-3s", "-2s", "-1s", "mean", "1s", "2s", "3s"))
+
+```
+
+## Running Code
+
+We can choose to display or hide the code: below is the same plot with the R code hidden
+
+
+```{r}
+#| echo: false
+
+x <- seq(-4, 4, length=100)
+y <- dnorm(x)
+plot(x,y, type = "l", lwd = 2, axes = FALSE, xlab = "", ylab = "")
+axis(1, at = -3:3, labels = c("-3s", "-2s", "-1s", "mean", "1s", "2s", "3s"))
+
+```
+
+
+## Stata Code
+
+```{stata}
+#| echo: true
+
+sysuse auto, clear
+describe
+```
+
+... And Python
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+#x-axis ranges from -3 and 3 with .001 steps
+x = np.arange(-3, 3, 0.001)
+
+#plot normal distribution with mean 0 and standard deviation 1
+plt.plot(x, norm.pdf(x, 0, 1))
+```
