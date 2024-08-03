@@ -1,0 +1,214 @@
+---
+title: Tooling ourselves up 
+subtitle: 1. Basics of document creation using Quarto
+author: Pierre Walthéry
+date: today
+date-format: d MMMM YYYY
+mainfont: Arial
+sansfont: Arial
+resource-path: 
+       - /home/mscsepw2/OneDrive/trainings/tooling/pics
+format: 
+# pdf:
+#     latex-tinytex: true
+#     pdf-engine: lualatex
+   revealjs:
+     institute: UK Data Service
+     scrollable: true
+     theme: [default, tooling.scss]
+     header: Introduction  to Quarto
+     header-logo: UKDS_Logos_Col_Grey_300dpi.png
+     embed-resources: true
+filters:
+  - reveal-header
+---
+
+## Plan
+- Three presentations:
+
+  1. Basic of document creation with Quarto
+  2. Using Git and GitHub for version control
+  3. Online collaboration with GitHub
+
+- Today:
+
+  1. What is Quarto
+  2. Structure and basic components
+  3. A simple example
+  4. More complex documents
+
+
+#  1. What is Quarto?
+
+## In a nutshell
+
+- Open-source scientific and technical publishing system 
+- Developed by [Posit](https://posit.co/) (< [RStudio](https://posit.co/download/rstudio-desktop/) and [Tidyverse](https://www.tidyverse.org/))
+- Next generation of Markdown, based on [Pandoc](https://pandoc.org/)
+- At the core  a bare-bones, text-based **markup language**.
+- A markup language is a series of rules and conventions for designing documents and their components. 
+- Other examples of markup languages:   html and LaTeX.
+- Quarto is a standalone application; run either from an IDE (RStudio) or as a Command Line Interface (cli) in a terminal
+
+## Features
+- Produces documents in a multitude of formats  (27): 
+    - Traditional (ie printable): pdf, html, .docx/odt, .ppt
+    - Digital documents: ePub, MediaWiki 
+- Single files, complex documents ie books and websites
+- Manages formulas, images, animations
+- Run R, Python, Julia code and display output
+- Shiny apps (still in progress)
+- Facilitates reproducible research
+- Time saving for documents that include code or code output
+
+## How does it work?
+
+- Typical workflow:
+
+  1.  Begins with creating a syntax file:
+  
+      - Text document with a .qmd extension
+  2. Render (ie compile) the document
+  3. Visualise the results
+  4. Further edit/amend the document
+  5. Render again...
+  - RStudio provides quasi WYSIWIG document edition
+  
+#    2. Basic components of Quarto documents
+
+
+## Basic structure
+
+- Two main components:
+    - Header
+    - Main content
+    
+- Header
+  - Denoted by three hyphens
+  - Specific language: YAML (YAML Ain't Markup Language)
+  - Consist of  a number of standardised options, typically: 
+  
+    - Title, author,  date, and document output format
+  - Options may be  document-wide  or 'suboptions'
+  
+## Example: syntax of this presentation
+```
+
+---
+title: "Basics of document creation using Quarto"
+author: Pierre Walthéry
+date: today
+date-format: d MMMM YYYY
+format: 
+   revealjs:
+     institute: UK Data Service
+---
+
+## What is Quarto
+
+- Open-source scientific and technical publishing system 
+- Developed by Posit, (< RStudio and Tidyverse)
+- Originates in Markdown and R Markdown
+- At the core is  a simplified, text-based **markup language**.
+
+```
+
+
+## Running R Code (1)
+
+```{r r_demo}
+#| echo: true
+
+x <- seq(-4, 4, length=100)
+y <- dnorm(x)
+plot(x,y, type = "l", lwd = 2, axes = FALSE, xlab = "", ylab = "")
+axis(1, at = -3:3, labels = c("-3s", "-2s", "-1s", "mean", "1s", "2s", "3s"))
+
+```
+
+## The code can either be visible or not
+
+The same plot with the R code hidden
+
+
+```{r r_demo_hidden}
+#| echo: false
+
+x <- seq(-4, 4, length=100)
+y <- dnorm(x)
+plot(x,y, type = "l", lwd = 2, axes = FALSE, xlab = "", ylab = "")
+axis(1, at = -3:3, labels = c("-3s", "-2s", "-1s", "mean", "1s", "2s", "3s"))
+
+```
+
+
+## Stata Code
+
+```{stata stata_code}
+sysuse auto, clear
+describe
+```
+
+## Python code 
+```{python python_demo}
+#| echo: true
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+#x-axis ranges from -3 and 3 with .001 steps
+x = np.arange(-3, 3, 0.001)
+
+#plot normal distribution with mean 0 and standard deviation 1
+plt.plot(x, norm.pdf(x, 0, 1))
+```
+
+
+
+## RStudio and Quarto
+
+- Full integration of Quarto within RStudio IDE
+- Features:
+
+  - Syntax highlighting
+  - Python (< Jupyter), R(< knitR), Stata code chunks integration
+  - Document rendering and visualisation
+
+- Edited and run (almost) like any R syntax file
+
+#  3. A simple example 
+
+## What we will do
+
+- Create a Quarto document in RStudio
+- Go through basic stylistic conventions
+- Rendering in different formats
+- Code chunks
+
+![](pics/quarto1.png)
+
+#  4. More advanced aspects of document creation  
+
+## Additional topics for online documents
+
+- Uniformising branding and formatting across documents
+
+  - [Practical BSA material](https://github.com/UKDataServiceOpen/Introduction_to_the_BSA/blob/main/Population%20estimates%20using%20the%20BSAS%20with%20R.qmd)
+
+- Creating complex documents (books and websites)
+  
+   - [R Guide](https://github.com/UKDataServiceOpen/UKDS_RGuide)
+
+## Additional resources
+
+- The [Quarto Website](https://quarto.org/docs/guide/) is a must for a comprehensive list of format specific options and capabilities.
+
+- [2022 Get Started with Quarto workshop materials](https://rstudio-conf-2022.github.io/get-started-quarto/) (In-depth introduction to Quarto)
+
+- For a general overview of Quarto capabilities, see [this presentation](https://rstudio-conf-2022.github.io/get-started-quarto/materials/01-intro-quarto.html#/so-what-is-quarto) in particular
+
+
+
+
+
