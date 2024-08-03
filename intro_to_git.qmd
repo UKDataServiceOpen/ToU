@@ -281,6 +281,7 @@ filters:
 
 - **Additional resources**
 
+    -   [Git book](https://git-scm.com/book/en/v2) Comprehensive Git manual
     -   [gittutorial](https://git-scm.com/docs/gittutorial/) Basic introduction to the main functionalities of git
     -   [Git Tutorial on W3 School](https://www.w3schools.com/git/) (In-depth introduction to Quarto)
     -   For RStudio and GitHub, see [this tutorial](https://resources.github.com/github-and-rstudio/)
